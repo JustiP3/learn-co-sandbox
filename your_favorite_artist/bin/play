@@ -1,5 +1,0 @@
-#!/your_favorite_artist/bin/env ruby
-
-require "your_favorite_artist.rb"
- 
-CLI.new.call

@@ -1,8 +1,8 @@
 require 'pry'
+require 'open-uri'
+require 'json'
+require 'httparty'
 
-require 'your_favorite_artist/version'
-require 'CLI'
-
-
-
-
+require_relative 'your_favorite_artist/version'
+require_relative 'your_favorite_artist/CLI'
+require_relative 'your_favorite_artist/API'

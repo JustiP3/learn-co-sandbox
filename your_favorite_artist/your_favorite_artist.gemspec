@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Justin Phillips'"]
   spec.email         = ["'justinphil02@yahoo.com'"]
 
-  spec.summary       = %q{A CLI app that tells you information about your favorite artist.}
-  spec.description   = %q{Accepts user input of an artist and returns options to display additional information}
+  spec.summary       = %q{CLI app that uses Last fm to return stats and options for your favoirte artist}
+  spec.description   = %q{Enter your favorite artist in a CLI, see options}
   spec.homepage      = "https://github.com/JustiP3/your_favorite_artist"
   spec.license       = "MIT"
 
@@ -38,4 +38,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "httparty"
+
 end
