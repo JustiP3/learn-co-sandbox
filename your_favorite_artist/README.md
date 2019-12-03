@@ -1,28 +1,23 @@
 # YourFavoriteArtist
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/your_favorite_artist`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem uses the last.fm API to tell you information about your favorite artist. Type in your favorite artist, then the gem will retrieve your artist's information from last.fm and prompt you with options such as "Related artists", "Top albums", and "Top songs". 
 
-TODO: Delete this and the text above, and describe your gem
+You also have the option to see more details:
+For "Related artists" you can choose an artist and see their top songs.
+For "Top albums" you can select an album and see the tracklist.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'your_favorite_artist'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install your_favorite_artist
+This gem will not be made public. 
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Navigate to the project directory (type 'cd your_favorite_artist').
+2. Type 'bundle install' to install the dependencies.
+3. Type 'ruby bin/run'.
+4. Follow the on screen instructions. 
+NOTE: You may type 'exit' at any time to skip to the end of the program.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bxMmJKgPxxI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Development
 

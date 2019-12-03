@@ -1,11 +1,12 @@
 class Artist 
-  attr_accessor :name, :bio, :short_bio, :error, :error_message
+  attr_accessor :name, :bio, :short_bio, :error, :error_message, :related_artists, :top_songs 
 
   def initialize(name)
     @name = name
     @error = false 
     @error_message = ""
-    @albums = []
+    @related_artists = []
+    @top_songs = []
   end 
   
   def get_info
@@ -14,26 +15,13 @@ class Artist
       self.error_message = temp_hash["message"]
       self.error = true 
     else 
-    self.name = temp_hash[:name]
-    self.bio = temp_hash[:bio]
-    self.short_bio = self.bio.slice(0,50)
-    self.short_bio << "..."
+      self.name = temp_hash[:name]
+      self.bio = temp_hash[:bio]
+      self.short_bio = self.bio.slice(0,75)
+      self.short_bio << "..."
+      self.related_artists = temp_hash[:similar]
     end 
 
-  end 
-  
-  def print_top_albums
-    API.get_top_albums(self)
-    Album.sort
-    Album.all.each do |album|
-      puts "#{album.rank}. #{album.name}"
-      puts "#{album.play_count} plays on last.fm"
-    end 
-    
-  end 
-  
-  def top_album 
-    Album.top_album 
   end 
   
   def create_album(album_hash, rank)
@@ -42,10 +30,28 @@ class Artist
     Album.new(name, rank, play_count) 
   end 
   
-  def reset 
-    Album.clear 
+    def print_top_albums
+    API.get_top_albums(self)
+    Album.sort
+    Album.all.each do |album|
+      puts "#{album.rank}. #{album.name} (#{album.play_count} plays)"
+    end 
   end 
   
-
+  def print_tracklist(index)
+    fav_album = Album.all[index]
+    API.get_album_info(self, fav_album)
+    puts fav_album.name + ":"
+    fav_album.track_list.each.with_index(1) {|track, i| puts "#{i}. #{track}"}
+  end 
+  
+  def print_related_artists 
+    related_artists.each.with_index(1) {|name, i| puts "#{i}. #{name}"}
+  end 
+  
+  def print_top_songs 
+    self.top_songs = API.get_top_tracks(self)
+    top_songs.each.with_index(1) {|song, i| puts "#{i}. #{song}"}
+  end 
   
 end 

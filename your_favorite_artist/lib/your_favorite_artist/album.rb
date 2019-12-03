@@ -1,13 +1,13 @@
-#This class only interacts with the artist class
 class Album
   @@all = []
   
-  attr_accessor :name, :rank, :play_count
+  attr_accessor :name, :rank, :play_count, :track_list
   
   def initialize (name, rank, play_count)
     @name = name
     @rank = rank
     @play_count = play_count
+    @track_list = []
     save 
   end 
   
@@ -16,16 +16,8 @@ class Album
     @@all[my_index] = self 
   end 
   
-  def tracklist
-    
-  end 
-  
   def self.sort
     @@all.sort {|a1, a2| a1.rank <=> a2.rank}
-  end 
-  
-  def self.top_album
-    @@all.sort.first 
   end 
   
   def self.clear
@@ -40,6 +32,8 @@ class Album
     @@all = var if var.class == Array 
   end 
   
- 
+  def self.size 
+    @@all.size 
+  end 
   
 end 
